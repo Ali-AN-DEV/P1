@@ -22,7 +22,7 @@
 #endif
 
 
-
+//TODO Recuerda scripts pasarlos con 1. : chmod u+x script.sh y 2. : ./script.sh -p test o ./script.sh
 
 void processCommand(char *commandNumber, char command, char *param1, char *param2, char *param3, char *param4) {
 
