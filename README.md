@@ -15,7 +15,7 @@ chmod u+x script.sh
 ``Dynamic List result (checkpoint #2 - March 14th): OK``
 
 
-• 3era Entrega aprobable: ``Global result: OK``
+• 3era Entrega aprobable: ``Global result: OK`` + comprobar distintos documentos .txt
 ### Link Repositorio de GitHub 
 > https://github.com/Ali-AN-DEV/P1
 ### Link Aulavirtual 
