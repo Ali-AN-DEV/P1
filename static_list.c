@@ -57,7 +57,6 @@ tPosL previous(tPosL p, tList l) {
 
 
 bool insertItem(tItemL d, tPosL p, tList *l) {
-    tPosL i; //pos auxiliar
 
     if (l -> lastPosition == MAX - 1) {
         return false;
@@ -68,7 +67,7 @@ bool insertItem(tItemL d, tPosL p, tList *l) {
             l -> data[l -> lastPosition] = d;
 
         } else { //caso general
-            for (i = l -> lastPosition; i > p; i--) {
+            for (tPosL i = l -> lastPosition; i > p; i--) {
                 l -> data[i] = l -> data[i - 1];
 
             }
@@ -80,10 +79,9 @@ bool insertItem(tItemL d, tPosL p, tList *l) {
 
 
 void deleteAtPosition(tPosL p, tList *l) {
-    tPosL i;
     //según la posición a eliminar, la detectamos y sustituimos su contenido por el de la posición siguiente,
     //haciendo esta acción sucesivamente hasta el final de la lista
-    for (i = p; i < l -> lastPosition; i++) {
+    for (tPosL i = p; i < l -> lastPosition; i++) {
         l -> data[i] = l -> data[i + 1];
     }
     l -> lastPosition--; //reducimos en uno el tamaño de la lista
@@ -101,12 +99,10 @@ void updateItem(tItemL d, tPosL p, tList *l) {
 
 
 tPosL findItem(tConsoleId consoleId, tList l) {
-    tPosL p;
-
     if (isEmptyList(l))
         return LNULL;
 
-    for (p = 0; p <= l.lastPosition; p++) {
+    for (tPosL p = 0; p <= l.lastPosition; p++) {
         if (strcmp(l.data[p].consoleId, consoleId) == 0)
             return p;
     }
