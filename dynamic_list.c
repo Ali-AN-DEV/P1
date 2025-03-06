@@ -10,4 +10,15 @@ GROUP: 1.2                                                        DATE: 05/03/20
 
 #include "dynamic_list.h"
 
-/*  Write your code here...  */
+void createEmptyList(tListL *l) {};
+bool isEmptyList(tListL l) {};
+tPosL first(tListL l) {};
+tPosL last(tListL l) {};
+tPosL next(tPosL p, tListL l) {};
+tPosL previous(tPosL p, tListL l){};
+bool insertItem(tItemL d, tPosL p, tListL *l) { };
+void deleteAtPosition(tPosL p, tListL *l) {};
+tItemL getItem(tPosL p, tListL l) {} ;
+void updateItem(tItemL d, tPosL p, tListL *l) {};
+bool createNode(tPosL *p) {};
+tPosL findItem(tItemL d, tListL l) {}; 
