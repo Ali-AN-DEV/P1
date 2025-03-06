@@ -16,12 +16,12 @@ GROUP: 1.2                                                        DATE: 20/02/20
 //Implementación de las operaciones
 
 void createEmptyList(tList *l) {
-   l -> lastPosition= LNULL;
+   l -> lastPosition= LNULL; //se crea una lista vacía asignando su último elemento como lnull
 }
 
 
 bool isEmptyList(tList l) {
-    return l.lastPosition == LNULL; //retorna verdadero si la posición de la lista está vacía.
+    return l.lastPosition == LNULL; //retorna verdadero si la lista está vacía.
 }
 
 
@@ -42,7 +42,7 @@ tPosL next(tPosL p, tList l) {
  if(p ==  l.lastPosition) {
  return LNULL; //en el caso de que la posición indicada sea la última de la lista
  } else {
- return ++p;
+ return ++p;//le suma una posición a la indicada, devolviendo la posición siguiente
  }
 }
 
@@ -51,7 +51,7 @@ tPosL previous(tPosL p, tList l) {
    if(p == 0) {
    return LNULL; //en el caso de que se introudzca el primer elemento de la lista
    } else {
-    return --p;
+    return --p;//le resta una posición a la indicada, devolviendo la posición anterior
     }
 }
 
@@ -100,12 +100,13 @@ void updateItem(tItemL d, tPosL p, tList *l) {
 
 tPosL findItem(tConsoleId consoleId, tList l) {
     if (isEmptyList(l))
-        return LNULL;
+        return LNULL; //si la lista es vacía no hay nada que retornar
 
     for (tPosL p = 0; p <= l.lastPosition; p++) {
         if (strcmp(l.data[p].consoleId, consoleId) == 0)
-            return p;
+            return p; //retornamos la posición del elemento el cual al comparar las strings de la información del consoleId del
+                      //objeto a comparar con el comparador coincida.
     }
-    return LNULL;
+    return LNULL; //si en el bucle no encontramos ninguna coincidencia retornamos LNULL
 }
 
