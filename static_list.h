@@ -8,7 +8,6 @@ AUTHOR 2: Pedro Rodríguez Raposo  LOGIN 2: pedro.rodriguez.raposo@udc.es
 GROUP: 1.2                                                        DATE: 20/02/2025
 */
 
-
 #ifndef STATIC_LIST_H
 #define STATIC_LIST_H
 
