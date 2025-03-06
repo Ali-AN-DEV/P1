@@ -13,15 +13,17 @@ GROUP: 1.2                                                        DATE: 05/03/20
 
 #include "types.h"
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stddef.h> //sin esta librería tenemos problemas para declarar LNULL
 
-#define LNULL LNULL
+#define LNULL NULL
 
 typedef struct tNode *tPosL;
 
 typedef struct tNode {
   tItemL data ;
   tPosL next;
-};
+}tNode;
 
 typedef tPosL tListL;
 
