@@ -41,4 +41,4 @@ void updateItem(tItemL d, tPosL p, tListL *l);
 bool createNode(tPosL *p);
 tPosL findItem(tItemL d, tListL l);
 
-#endif DYNAMIC_LIST_H
+#endif
