@@ -13,20 +13,20 @@ GROUP: 1.2                                                        DATE: 05/03/20
 #include <stdio.h>
 #include <string.h>
 
-void createEmptyList(tListL *l) {
+void createEmptyList(tList *l) {
     *l = LNULL;
 }
 
-bool isEmptyList(tListL l) {
+bool isEmptyList(tList l) {
 return l == LNULL;
 };
 
-tPosL first(tListL l)
+tPosL first(tList l)
 {
     return l; //l es el primer elemento
 };
 
-tPosL last(tListL l) {
+tPosL last(tList l) {
     tPosL p;
     if (l == LNULL) {
         return LNULL;
@@ -39,7 +39,7 @@ tPosL last(tListL l) {
     return p;
 };
 
-tPosL next(tPosL p, tListL l) {
+tPosL next(tPosL p, tList l) {
     if (p == LNULL) {
         return LNULL;
     }
@@ -47,7 +47,7 @@ tPosL next(tPosL p, tListL l) {
 };
 
 
-tPosL previous(tPosL p, tListL l) {
+tPosL previous(tPosL p, tList l) {
     if (p == l) { // Si p es el primero no hay anterior
         return LNULL;
     } else {
@@ -60,7 +60,7 @@ tPosL previous(tPosL p, tListL l) {
 }
 
 
-bool insertItem(tItemL d, tPosL p, tListL *l) {
+bool insertItem(tItemL d, tPosL p, tList *l) {
     tPosL nuevoNodo;
 
     if (!createNode(&nuevoNodo)) {
@@ -91,7 +91,7 @@ bool insertItem(tItemL d, tPosL p, tListL *l) {
 }
 
 
-void deleteAtPosition(tPosL p, tListL *l) {
+void deleteAtPosition(tPosL p, tList *l) {
     tPosL q;
 
     if (p == *l) { // Eliminar el primer elemento
@@ -106,11 +106,11 @@ void deleteAtPosition(tPosL p, tListL *l) {
 }
 
 
-tItemL getItem(tPosL p, tListL l) {
+tItemL getItem(tPosL p, tList l) {
  return p -> data;
 } ;
 
-void updateItem(tItemL d, tPosL p, tListL *l) {
+void updateItem(tItemL d, tPosL p, tList *l) {
   p->data = d;
 };
 
@@ -119,7 +119,7 @@ bool createNode(tPosL *p) {
     return *p != LNULL;
 };
 
-tPosL findItem(tConsoleId id, tListL l) {
+tPosL findItem(tConsoleId id, tList l) {
     tPosL p;
 
     for (p = l; p != LNULL; p = p->next) {

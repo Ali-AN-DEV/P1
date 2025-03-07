@@ -25,20 +25,20 @@ typedef struct tNode {
   tPosL next;
 }tNode;
 
-typedef tPosL tListL;
+typedef tPosL tList;
 
 /*  Write your code here...  */
-void createEmptyList(tListL *l);
-bool isEmptyList(tListL l);
-tPosL first(tListL l);
-tPosL last(tListL l);
-tPosL next(tPosL p, tListL l);
-tPosL previous(tPosL p, tListL l);
-bool insertItem(tItemL d, tPosL p, tListL *l);
-void deleteAtPosition(tPosL p, tListL *l);
-tItemL getItem(tPosL p, tListL l);
-void updateItem(tItemL d, tPosL p, tListL *l);
+void createEmptyList(tList *l);
+bool isEmptyList(tList l);
+tPosL first(tList l);
+tPosL last(tList l);
+tPosL next(tPosL p, tList l);
+tPosL previous(tPosL p, tList l);
+bool insertItem(tItemL d, tPosL p, tList *l);
+void deleteAtPosition(tPosL p, tList *l);
+tItemL getItem(tPosL p, tList l);
+void updateItem(tItemL d, tPosL p, tList *l);
 bool createNode(tPosL *p);
-tPosL findItem(tItemL d, tListL l);
+tPosL findItem(tConsoleId id, tList l);
 
 #endif

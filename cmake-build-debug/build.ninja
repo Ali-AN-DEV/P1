@@ -90,13 +90,6 @@ build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/main.exe: C_EXECUTABLE_LINK
 
 build cmake_object_order_depends_target_test_lists: phony || .
 
-build CMakeFiles/test_lists.dir/test.c.obj: C_COMPILER__test_lists_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/test.c || cmake_object_order_depends_target_test_lists
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"new.txt\"
-  DEP_FILE = CMakeFiles\test_lists.dir\test.c.obj.d
-  FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
-  OBJECT_DIR = CMakeFiles\test_lists.dir
-  OBJECT_FILE_DIR = CMakeFiles\test_lists.dir
-
 build CMakeFiles/test_lists.dir/dynamic_list.c.obj: C_COMPILER__test_lists_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/dynamic_list.c || cmake_object_order_depends_target_test_lists
   DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"new.txt\"
   DEP_FILE = CMakeFiles\test_lists.dir\dynamic_list.c.obj.d
@@ -112,7 +105,7 @@ build CMakeFiles/test_lists.dir/dynamic_list.c.obj: C_COMPILER__test_lists_unsca
 #############################################
 # Link the executable C:\Users\Ali Abu-afash Nayef\Desktop\P1\bin\test_lists.exe
 
-build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/test_lists.exe: C_EXECUTABLE_LINKER__test_lists_Debug CMakeFiles/test_lists.dir/test.c.obj CMakeFiles/test_lists.dir/dynamic_list.c.obj
+build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/test_lists.exe: C_EXECUTABLE_LINKER__test_lists_Debug CMakeFiles/test_lists.dir/dynamic_list.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\test_lists.dir
