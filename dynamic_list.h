@@ -14,20 +14,19 @@ GROUP: 1.2                                                        DATE: 05/03/20
 #include "types.h"
 #include <stdbool.h>
 #include <stdlib.h>
-#include <stddef.h> //sin esta librería tenemos problemas para declarar LNULL
+#include <stddef.h>
 
 #define LNULL NULL
 
 typedef struct tNode *tPosL;
 
 typedef struct tNode {
-  tItemL data ;
-  tPosL next;
-}tNode;
+    tItemL data;
+    tPosL next;
+} tNode;
 
 typedef tPosL tList;
 
-/*  Write your code here...  */
 void createEmptyList(tList *l);
 bool isEmptyList(tList l);
 tPosL first(tList l);

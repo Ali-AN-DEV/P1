@@ -18,112 +18,107 @@ void createEmptyList(tList *l) {
 }
 
 bool isEmptyList(tList l) {
-return l == LNULL;
-};
+    return l == LNULL;
+}
 
-tPosL first(tList l)
-{
-    return l; //l es el primer elemento
-};
+tPosL first(tList l) {
+    return l;
+}
 
 tPosL last(tList l) {
     tPosL p;
-    if (l == LNULL) {
+
+    if (isEmptyList(l)) {
         return LNULL;
     }
 
-    //Recorrer la lista hasta la última posición
-    for (p = l; p->next != LNULL; p = p->next) { //siendo p la pos del primer elemento, y p además no es el último, comprobar el siguiente.
-        //únicamente para iterar hasta el final de la lista
-    }
+    for (p = l; p->next != LNULL; p = p->next);
     return p;
-};
+}
 
 tPosL next(tPosL p, tList l) {
     if (p == LNULL) {
         return LNULL;
     }
     return p->next;
-};
-
-
-tPosL previous(tPosL p, tList l) {
-    if (p == l) { // Si p es el primero no hay anterior
-        return LNULL;
-    } else {
-        tPosL q;
-        for (q = l; q != LNULL && q->next != p; q = q->next) {
-            // Iterando hasta encontrar el nodo cuyo siguiente es p
-        }
-        return q; // Retornamos el nodo encontrado o LNULL si no se encontró
-    }
 }
 
+tPosL previous(tPosL p, tList l) {
+    tPosL q;
 
-bool insertItem(tItemL d, tPosL p, tList *l) {
-    tPosL nuevoNodo;
+    if (p == l) {
+        return LNULL;
+    }
 
-    if (!createNode(&nuevoNodo)) {
+    for (q = l; q != LNULL && q->next != p; q = q->next);
+    return q;
+}
+
+bool createNode(tPosL *p) {
+    *p = malloc(sizeof(tNode));
+    return *p != LNULL;
+}
+
+bool insertItem(tItemL d, tPosL p, tList *l) { //cambiada, daba problemas
+    tPosL q, r;
+
+    if (!createNode(&q)) {
         return false;
     }
 
-    // Añadimos la información al nodo
-    nuevoNodo->data = d;
+    q->data = d;
+    q->next = LNULL;
 
-    // Caso 1: Lista vacía o inserción al principio
-    if (*l == LNULL || p == *l) {
-        nuevoNodo->next = *l;
-        *l = nuevoNodo;
-    }
-    // Caso 2: Inserción al final
-    else if (p == LNULL) {
-        tPosL ultimo = last(*l);
-        ultimo->next = nuevoNodo;
-        nuevoNodo->next = LNULL;
-    }
-    // Caso 3: Inserción en medio
-    else {
-        nuevoNodo->next = p->next;
-        p->next = nuevoNodo;
+    if (isEmptyList(*l)) {
+        // CASO 1: Lista vacía
+        *l = q;
+    } else if (p == LNULL) {
+        // CASO 2: Insertar al final
+        r = last(*l);
+        r->next = q;
+    } else if (p == *l) {
+        // CASO 3: Insertar al principio
+        q->next = *l;
+        *l = q;
+    } else {
+        // CASO 4: Insertar antes de una posición (dentro de la lista)
+        // Intercambiamos los datos y ajustamos los punteros
+        q->data = p->data;
+        p->data = d;
+        q->next = p->next;
+        p->next = q;
     }
 
     return true;
 }
 
-
 void deleteAtPosition(tPosL p, tList *l) {
     tPosL q;
 
-    if (p == *l) { // Eliminar el primer elemento
+    if (p == *l) {
+        // Eliminar el primer elemento
         *l = p->next;
-        free(p);
-    } else { // Eliminar en medio o al final
-        // Buscamos el nodo anterior a p
+    } else {
+        // Eliminar un elemento que no es el primero
         q = previous(p, *l);
         q->next = p->next;
-        free(p);
     }
+
+    free(p);
 }
 
-
 tItemL getItem(tPosL p, tList l) {
- return p -> data;
-} ;
+    return p->data;
+}
 
 void updateItem(tItemL d, tPosL p, tList *l) {
-  p->data = d;
-};
-
-bool createNode(tPosL *p) {
-    *p = malloc(sizeof(tNode));
-    return *p != LNULL;
-};
+    p->data = d;
+}
 
 tPosL findItem(tConsoleId id, tList l) {
     tPosL p;
 
     for (p = l; p != LNULL; p = p->next) {
-        // Compara las strings de las IDconsola y si coinciden retorna la posición.
         if (strcmp(p->data.consoleId, id) == 0) {
             return p;
         }
