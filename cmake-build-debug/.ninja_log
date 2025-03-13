@@ -1,4 +1,10 @@
 # ninja log v6
 6	223	7617684881845778	CMakeFiles/test_lists.dir/test.c.obj	b811547e1354552f
 13	224	7617684881916625	CMakeFiles/test_lists.dir/static_list.c.obj	27911598e3a01d56
+8	98	7635695912742766	CMakeFiles/main.dir/dynamic_list.c.obj	b00d76ea85ad47d1
 224	601	7617684884026202	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/test_lists.exe	375ca73a20119506
+4	99	7635695912698558	CMakeFiles/main.dir/main.c.obj	f3bd49e9a046c543
+99	195	7635695913650295	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/main.exe	a9a15dc9d94b8036
+3	93	7635697415310751	CMakeFiles/main.dir/main.c.obj	d0efa3be897b0d2e
+7	105	7635697415350757	CMakeFiles/main.dir/dynamic_list.c.obj	ba1355c019e9f10
+105	254	7635697416330529	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/main.exe	a9a15dc9d94b8036

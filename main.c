@@ -22,22 +22,157 @@ GROUP: 1.2                                                        DATE: 13/03/20
 #include "static_list.h"
 #endif
 
+// Función para mostrar la lista de consolas
+void printStatistics(tList *list) {
+    tPosL pos;
+    int nintendoCount = 0, segaCount = 0;
+    float nintendoSum = 0.0, segaSum = 0.0;
 
-//TODO Recuerda scripts pasarlos con 1. : chmod u+x script.sh y 2. : ./script.sh -p test o ./script.sh
+    // Imprimir cada consola en la lista
+    for (pos = first(*list); pos != LNULL; pos = next(pos, *list)) {
+        tItemL item = getItem(pos, *list);
+        printf("Console %s seller %s brand %s price %.2f bids %d\n",
+               item.consoleId, item.seller,
+               (item.consoleBrand == nintendo) ? "nintendo" : "sega",
+               item.consolePrice, item.bidCounter);
+
+        // Actualizar estadísticas por marca
+        if (item.consoleBrand == nintendo) {
+            nintendoCount++;
+            nintendoSum += item.consolePrice;
+        } else {
+            segaCount++;
+            segaSum += item.consolePrice;
+        }
+    }
+
+    // Calcular y mostrar estadísticas por marca
+    printf("\nBrand     Consoles    Price  Average\n");
+    printf("Nintendo%8d%10.2f%10.2f\n", nintendoCount, nintendoSum,
+           (nintendoCount > 0) ? nintendoSum / nintendoCount : 0.0);
+    printf("Sega    %8d%10.2f%10.2f\n", segaCount, segaSum,
+           (segaCount > 0) ? segaSum / segaCount : 0.0);
+}
 
 void processCommand(char *commandNumber, char command, char *param1, char *param2, char *param3, char *param4) {
+    static tList list;
+    static int initialized = 0;
+    tPosL pos;
+    tItemL item;
+
+    // Inicializar la lista si no se ha hecho aún
+    if (!initialized) {
+        createEmptyList(&list);
+        initialized = 1;
+    }
+
+    // Mostrar encabezado de comando
+    printf("********************\n");
 
     switch (command) {
         case 'N':
-            printf("Command: %s %c %s %s %s %s\n", commandNumber, command, param1, param2, param3, param4);
+            // Comando NEW: dar de alta una nueva consola
+            printf("%s N: console %s seller %s brand %s price %s\n",
+                   commandNumber, param1, param2, param3, param4);
+
+            // Comprobar si ya existe una consola con ese ID
+            if (findItem(param1, list) != LNULL) {
+                printf("+ Error: New not possible\n");
+                break;
+            }
+
+            // Preparar el nuevo item para la lista
+            strcpy(item.consoleId, param1);
+            strcpy(item.seller, param2);
+            item.consoleBrand = (strcmp(param3, "nintendo") == 0) ? nintendo : sega;
+            item.consolePrice = atof(param4);
+            item.bidCounter = 0;
+
+            // Insertar en la lista
+            if (insertItem(item, LNULL, &list)) {
+                printf("* New: console %s seller %s brand %s price %.2f\n",
+                       item.consoleId, item.seller,
+                       (item.consoleBrand == nintendo) ? "nintendo" : "sega",
+                       item.consolePrice);
+            } else {
+                printf("+ Error: New not possible\n");
+            }
             break;
+
         case 'D':
+            // Comando DELETE: eliminar una consola
+            printf("%s D: console %s\n", commandNumber, param1);
+
+            // Buscar la consola por su ID
+            pos = findItem(param1, list);
+            if (pos == LNULL) {
+                printf("+ Error: Delete not possible\n");
+            } else {
+                // Obtener los datos antes de eliminar
+                item = getItem(pos, list);
+                printf("* Delete: console %s seller %s brand %s price %.2f bids %d\n",
+                       item.consoleId, item.seller,
+                       (item.consoleBrand == nintendo) ? "nintendo" : "sega",
+                       item.consolePrice, item.bidCounter);
+
+                // Eliminar de la lista
+                deleteAtPosition(pos, &list);
+            }
             break;
+
         case 'B':
+            // Comando BID: puja por una consola
+            printf("%s B: console %s bidder %s price %s\n",
+                   commandNumber, param1, param2, param3);
+
+            // Buscar la consola por su ID
+            pos = findItem(param1, list);
+            if (pos == LNULL) {
+                printf("+ Error: Bid not possible\n");
+                break;
+            }
+
+            // Obtener los datos de la consola
+            item = getItem(pos, list);
+
+            // Comprobar si el vendedor es el mismo que el pujador
+            if (strcmp(item.seller, param2) == 0) {
+                printf("+ Error: Bid not possible\n");
+                break;
+            }
+
+            // Comprobar si el precio de la puja es mayor que el precio actual
+            float bidPrice = atof(param3);
+            if (bidPrice <= item.consolePrice) {
+                printf("+ Error: Bid not possible\n");
+                break;
+            }
+
+            // Actualizar el precio y el contador de pujas
+            item.consolePrice = bidPrice;
+            item.bidCounter++;
+            updateItem(item, pos, &list);
+
+            // Mostrar los datos actualizados
+            printf("* Bid: console %s seller %s brand %s price %.2f bids %d\n",
+                   item.consoleId, item.seller,
+                   (item.consoleBrand == nintendo) ? "nintendo" : "sega",
+                   item.consolePrice, item.bidCounter);
             break;
+
         case 'S':
+            // Comando STATS: mostrar estadísticas
+            printf("%s S\n", commandNumber);
+
+            if (isEmptyList(list)) {
+                printf("+ Error: Stats not possible\n");
+            } else {
+                printStatistics(&list);
+            }
             break;
+
         default:
+            printf("Unknown command %c\n", command);
             break;
     }
 }
@@ -51,7 +186,6 @@ void readTasks(char *filename) {
     f = fopen(filename, "r");
 
     if (f != NULL) {
-
         while (fgets(buffer, MAX_BUFFER, f)) {
             commandNumber = strtok(buffer, delimiters);
             command = strtok(NULL, delimiters);
@@ -64,15 +198,12 @@ void readTasks(char *filename) {
         }
 
         fclose(f);
-
     } else {
         printf("Cannot open file %s.\n", filename);
     }
 }
 
-
 int main(int nargs, char **args) {
-
     char *file_name = "new.txt";
 
     if (nargs > 1) {
@@ -87,9 +218,3 @@ int main(int nargs, char **args) {
 
     return 0;
 }
-
-
-
-
-
-

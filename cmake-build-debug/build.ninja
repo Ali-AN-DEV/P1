@@ -50,14 +50,14 @@ cmake_ninja_workdir = C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/cmake-build-deb
 build cmake_object_order_depends_target_main: phony || .
 
 build CMakeFiles/main.dir/main.c.obj: C_COMPILER__main_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/main.c || cmake_object_order_depends_target_main
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"new.txt\"
+  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"delete.txt\"
   DEP_FILE = CMakeFiles\main.dir\main.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir
 
 build CMakeFiles/main.dir/dynamic_list.c.obj: C_COMPILER__main_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/dynamic_list.c || cmake_object_order_depends_target_main
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"new.txt\"
+  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"delete.txt\"
   DEP_FILE = CMakeFiles\main.dir\dynamic_list.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
   OBJECT_DIR = CMakeFiles\main.dir
@@ -91,7 +91,7 @@ build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/main.exe: C_EXECUTABLE_LINK
 build cmake_object_order_depends_target_test_lists: phony || .
 
 build CMakeFiles/test_lists.dir/dynamic_list.c.obj: C_COMPILER__test_lists_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/dynamic_list.c || cmake_object_order_depends_target_test_lists
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"new.txt\"
+  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"delete.txt\"
   DEP_FILE = CMakeFiles\test_lists.dir\dynamic_list.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
   OBJECT_DIR = CMakeFiles\test_lists.dir
