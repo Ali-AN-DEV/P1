@@ -48,9 +48,9 @@ void printStatistics(tList *list) {
 
     // Calcular y mostrar estadísticas por marca
     printf("\nBrand     Consoles    Price  Average\n");
-    printf("Nintendo%8d%10.2f%10.2f\n", nintendoCount, nintendoSum,
+    printf("Nintendo%10d%9.2f%9.2f\n", nintendoCount, nintendoSum,
            (nintendoCount > 0) ? nintendoSum / nintendoCount : 0.0);
-    printf("Sega    %8d%10.2f%10.2f\n", segaCount, segaSum,
+    printf("Sega    %10d%9.2f%9.2f\n", segaCount, segaSum,
            (segaCount > 0) ? segaSum / segaCount : 0.0);
 }
 
