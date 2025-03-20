@@ -29,28 +29,32 @@ tPosL last(tList l) {
     tPosL p;
 
     if (isEmptyList(l)) {
-        return LNULL;
+        return LNULL;//si la lista esta vacía, devuelve nulo al no haber ningún elemento.
     }
 
     for (p = l; p->next != LNULL; p = p->next);
+    //avanza desde el primer elemento hasta llegar a un elemento
+    //cuyo siguiente sea nulo, y por ende sea el último.
     return p;
 }
 
 tPosL next(tPosL p, tList l) {
     if (p == LNULL) {
-        return LNULL;
+        return LNULL;//en caso de p no sea una posición válida.
     }
-    return p->next;
+    return p->next; //el valor p pasa a ser el siguiente al introducido, devuelve p.
 }
 
 tPosL previous(tPosL p, tList l) {
     tPosL q;
 
     if (p == l) {
-        return LNULL;
+        return LNULL;//en caso de p ya sea la primera posición y no tenga previas.
     }
 
     for (q = l; q != LNULL && q->next != p; q = q->next);
+    //avanza desde la primera posición hasta llegar a una cuya siguiente sea p,
+    //y por ende q sea la posición previa a p
     return q;
 }
 
