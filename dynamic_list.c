@@ -108,25 +108,28 @@ void deleteAtPosition(tPosL p, tList *l) {
         q->next = p->next;
     }
 
-    free(p);//destruye la variable p
+    free(p);//destruye la variable p, eliminando el elemento de su posición.
 }
 
 tItemL getItem(tPosL p, tList l) {
-    return p->data;
+    return p->data;//devuelve el contenido asociado a la posición indicada.
 }
 
 void updateItem(tItemL d, tPosL p, tList *l) {
-    p->data = d;
+    p->data = d;//accede al contenido asociado a la posición indicada y lo cambia por d.
 }
 
 tPosL findItem(tConsoleId id, tList l) {
     tPosL p;
 
     for (p = l; p != LNULL; p = p->next) {
+        //Pasa por todas las posiciones de la lista desde la primera.
+        //Para al encontrar una posición en la que el elemento tenga asociado un identificador
+        //igual al indicado.
         if (strcmp(p->data.consoleId, id) == 0) {
             return p;
         }
     }
 
-    return LNULL;
+    return LNULL;//devuelve LNULL si pasa por toda la lista y no ha encontrado un id que se corresponda.
 }

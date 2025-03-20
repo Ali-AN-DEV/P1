@@ -180,10 +180,10 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
 void readTasks(char *filename) {
     FILE *f = NULL;
     char *commandNumber, *command, *param1, *param2, *param3, *param4;
-    const char delimiters[] = " \n\r";
-    char buffer[MAX_BUFFER];
+    const char delimiters[] = " \n\r"; //Controlamos los saltos de línea para que el output sea igual a la referencia
+    char buffer[MAX_BUFFER]; //se almacenan las líneas leídas
 
-    f = fopen(filename, "r");
+    f = fopen(filename, "r"); //abrimos el archivo
 
     if (f != NULL) {
         while (fgets(buffer, MAX_BUFFER, f)) {
@@ -201,7 +201,7 @@ void readTasks(char *filename) {
     } else {
         printf("Cannot open file %s.\n", filename);
     }
-}
+} 
 
 int main(int nargs, char **args) {
     char *file_name = "new.txt";

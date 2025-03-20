@@ -14,24 +14,38 @@ GROUP: 1.2                                                        DATE: 20/02/20
 
 //Implementación de las operaciones
 
-/**
+/****
 *Objetivo:
 *Entradas:(identificador y breve descripción, una por línea).
 *Salidas:lo mismo que arriba
 *Precondiciones:
 *Poscondiciones:
-**/
+****/
 
 void createEmptyList(tList *l) {
    l -> lastPosition= LNULL; //se crea una lista vacía asignando su último elemento como lnull
 }
 
-
+/****
+*Objetivo: Determinar si la lista esta vacía
+*Entradas:
+ -l: lista
+*Salidas:
+-true si la lista está vacía, false en el caso contrario
+****/
 bool isEmptyList(tList l) {
-    return l.lastPosition == LNULL; //retorna verdadero si la lista está vacía.
+    return l.lastPosition == LNULL; //retorna TRUE si la lista está vacía.
 }
 
-
+/****
+*Objetivo: Devolver la posición del primer elemento de la lista
+*Entradas:
+ -l: lista
+*Salidas:
+-LNULL si la lista está vacía
+-posición 0
+*Precondiciones: que la lista no esté vacía
+****/
 tPosL first(tList l) {
     if (isEmptyList(l)) {
         return LNULL; //si está vacía no devolvemos nada.
@@ -39,7 +53,14 @@ tPosL first(tList l) {
     return 0; //solo funciona en listas estáticas, ya que siempre pos 0 será la primera.
 }
 
-
+/****
+*Objetivo: Devolver la posición del último elemento de la lista.
+*Entradas:
+ -l: lista
+*Salidas:
+-l.lastPosition
+*Precondiciones: que la lista no esté vacía
+****/
 tPosL last(tList l) {
     return l.lastPosition; //recogemos la última posición
 }

@@ -34,13 +34,13 @@ chmod u+x script.sh
 ### Template para la documentación de funciones
 
 ```C
-/**
+/****
 *Objetivo:
 *Entradas:(identificador y breve descripción, una por línea).
-*Salidas:lo mismo que lo anterior
+*Salidas:lo mismo que arriba
 *Precondiciones:
 *Poscondiciones:
-**/
+****/
 ```
 ### Link Repositorio de GitHub 
 > https://github.com/Ali-AN-DEV/P1
