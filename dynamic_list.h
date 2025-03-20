@@ -27,6 +27,8 @@ typedef struct tNode {
 
 typedef tPosL tList;
 
+//Declaración de las operacionesd de la lista dinámica
+
 void createEmptyList(tList *l);
 bool isEmptyList(tList l);
 tPosL first(tList l);

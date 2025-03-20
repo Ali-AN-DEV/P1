@@ -8,12 +8,19 @@ AUTHOR 2: Pedro Rodríguez Raposo  LOGIN 2: pedro.rodriguez.raposo@udc.es
 GROUP: 1.2                                                        DATE: 20/02/2025
 */
 
-
 #include <stdbool.h>
 #include "static_list.h"
 #include "string.h"
 
 //Implementación de las operaciones
+
+/**
+*Objetivo:
+*Entradas:(identificador y breve descripción, una por línea).
+*Salidas:lo mismo que arriba
+*Precondiciones:
+*Poscondiciones:
+**/
 
 void createEmptyList(tList *l) {
    l -> lastPosition= LNULL; //se crea una lista vacía asignando su último elemento como lnull

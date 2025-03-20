@@ -14,15 +14,15 @@ GROUP: 1.2                                                        DATE: 05/03/20
 #include <string.h>
 
 void createEmptyList(tList *l) {
-    *l = LNULL;
+    *l = LNULL; //sec crea una lista con elementos nulos.
 }
 
 bool isEmptyList(tList l) {
-    return l == LNULL;
+    return l == LNULL; //retorna l en caso de que la lista esté vacía
 }
 
 tPosL first(tList l) {
-    return l;
+    return l; //retorna el primer valor de l. Si este es nu,,lo, devuelve LNULL
 }
 
 tPosL last(tList l) {

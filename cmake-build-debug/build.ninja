@@ -50,15 +50,15 @@ cmake_ninja_workdir = C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/cmake-build-deb
 build cmake_object_order_depends_target_main: phony || .
 
 build CMakeFiles/main.dir/main.c.obj: C_COMPILER__main_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/main.c || cmake_object_order_depends_target_main
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"delete.txt\"
+  DEFINES = -DINPUT_FILE=\"bid.txt\" -DSTATIC_LIST
   DEP_FILE = CMakeFiles\main.dir\main.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir
 
-build CMakeFiles/main.dir/dynamic_list.c.obj: C_COMPILER__main_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/dynamic_list.c || cmake_object_order_depends_target_main
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"delete.txt\"
-  DEP_FILE = CMakeFiles\main.dir\dynamic_list.c.obj.d
+build CMakeFiles/main.dir/static_list.c.obj: C_COMPILER__main_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/static_list.c || cmake_object_order_depends_target_main
+  DEFINES = -DINPUT_FILE=\"bid.txt\" -DSTATIC_LIST
+  DEP_FILE = CMakeFiles\main.dir\static_list.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir
@@ -71,7 +71,7 @@ build CMakeFiles/main.dir/dynamic_list.c.obj: C_COMPILER__main_unscanned_Debug C
 #############################################
 # Link the executable C:\Users\Ali Abu-afash Nayef\Desktop\P1\bin\main.exe
 
-build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/main.exe: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.c.obj CMakeFiles/main.dir/dynamic_list.c.obj
+build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/main.exe: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.c.obj CMakeFiles/main.dir/static_list.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\main.dir
@@ -90,9 +90,9 @@ build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/main.exe: C_EXECUTABLE_LINK
 
 build cmake_object_order_depends_target_test_lists: phony || .
 
-build CMakeFiles/test_lists.dir/dynamic_list.c.obj: C_COMPILER__test_lists_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/dynamic_list.c || cmake_object_order_depends_target_test_lists
-  DEFINES = -DDYNAMIC_LIST -DINPUT_FILE=\"delete.txt\"
-  DEP_FILE = CMakeFiles\test_lists.dir\dynamic_list.c.obj.d
+build CMakeFiles/test_lists.dir/static_list.c.obj: C_COMPILER__test_lists_unscanned_Debug C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/static_list.c || cmake_object_order_depends_target_test_lists
+  DEFINES = -DINPUT_FILE=\"bid.txt\" -DSTATIC_LIST
+  DEP_FILE = CMakeFiles\test_lists.dir\static_list.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra
   OBJECT_DIR = CMakeFiles\test_lists.dir
   OBJECT_FILE_DIR = CMakeFiles\test_lists.dir
@@ -105,7 +105,7 @@ build CMakeFiles/test_lists.dir/dynamic_list.c.obj: C_COMPILER__test_lists_unsca
 #############################################
 # Link the executable C:\Users\Ali Abu-afash Nayef\Desktop\P1\bin\test_lists.exe
 
-build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/test_lists.exe: C_EXECUTABLE_LINKER__test_lists_Debug CMakeFiles/test_lists.dir/dynamic_list.c.obj
+build C$:/Users/Ali$ Abu-afash$ Nayef/Desktop/P1/bin/test_lists.exe: C_EXECUTABLE_LINKER__test_lists_Debug CMakeFiles/test_lists.dir/static_list.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\test_lists.dir

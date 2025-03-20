@@ -1,6 +1,8 @@
 # Programación II - P1 - Grupo Ali/Pedro
 
 ## Cabecera de archivos
+
+
 ```C
 /*
 TITLE: PROGRAMMING II LABS                   SUBTITLE: P1
@@ -28,6 +30,18 @@ chmod u+x script.sh
 
 
 • 3era Entrega aprobable: ``Global result: OK`` + comprobar distintos documentos .txt
+
+### Template para la documentación de funciones
+
+```C
+/**
+*Objetivo:
+*Entradas:(identificador y breve descripción, una por línea).
+*Salidas:lo mismo que lo anterior
+*Precondiciones:
+*Poscondiciones:
+**/
+```
 ### Link Repositorio de GitHub 
 > https://github.com/Ali-AN-DEV/P1
 ### Link Aulavirtual 
