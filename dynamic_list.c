@@ -29,12 +29,12 @@ tPosL last(tList l) {
     tPosL p;
 
     if (isEmptyList(l)) {
-        return LNULL;//si la lista esta vacía, devuelve nulo al no haber ningún elemento.
+        return LNULL;//si la lista esta vacía, devuelve nulo.
     }
 
     for (p = l; p->next != LNULL; p = p->next);
-    //avanza desde el primer elemento hasta llegar a un elemento
-    //cuyo siguiente sea nulo, y por ende sea el último.
+    //avanza desde la primera posición hasta llegar a una
+    //cuya siguiente sea nula, y por ende sea la última.
     return p;
 }
 
@@ -42,7 +42,7 @@ tPosL next(tPosL p, tList l) {
     if (p == LNULL) {
         return LNULL;//en caso de p no sea una posición válida.
     }
-    return p->next; //el valor p pasa a ser el siguiente al introducido, devuelve p.
+    return p->next; //la posición p pasa a ser la siguiente a la introducida, devuelve p.
 }
 
 tPosL previous(tPosL p, tList l) {
@@ -67,7 +67,7 @@ bool insertItem(tItemL d, tPosL p, tList *l) { //cambiada, daba problemas
     tPosL q, r;
 
     if (!createNode(&q)) {
-        return false;
+        return false;//devuelve false al no haberse insertado el elemento
     }
 
     q->data = d;
@@ -90,7 +90,7 @@ bool insertItem(tItemL d, tPosL p, tList *l) { //cambiada, daba problemas
         q->data = p->data;
         p->data = d;
         q->next = p->next;
-        p->next = q;
+        p->next = q;//se inserta en la posición posterior a p.
     }
 
     return true;
@@ -108,7 +108,7 @@ void deleteAtPosition(tPosL p, tList *l) {
         q->next = p->next;
     }
 
-    free(p);
+    free(p);//destruye la variable p
 }
 
 tItemL getItem(tPosL p, tList l) {

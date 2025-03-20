@@ -3,10 +3,10 @@
 7	105	7635697415350757	CMakeFiles/main.dir/dynamic_list.c.obj	ba1355c019e9f10
 2	115	7641667303332174	CMakeFiles/test_lists.dir/static_list.c.obj	27911598e3a01d56
 224	601	7617684884026202	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/test_lists.exe	375ca73a20119506
-3	100	7640132889842368	CMakeFiles/main.dir/main.c.obj	83a5caa0e5e683c8
-9	105	7640132889902215	CMakeFiles/main.dir/static_list.c.obj	6edc328438df4238
-106	208	7640132890878739	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/main.exe	746b13c4265ea6de
-1	601	7641671356835955	build.ninja	1f1469895e8f5917
-6	72	7641671400151499	CMakeFiles/main.dir/static_list.c.obj	81ab994dcd9d8491
-2	82	7641671400121471	CMakeFiles/main.dir/main.c.obj	67dff1a7fc7de697
-82	151	7641671400925897	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/main.exe	746b13c4265ea6de
+5	97	7641696379904351	CMakeFiles/main.dir/main.c.obj	67dff1a7fc7de697
+10	81	7641696379953699	CMakeFiles/main.dir/static_list.c.obj	81ab994dcd9d8491
+97	189	7641696380823596	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/main.exe	746b13c4265ea6de
+1	601	7641699217999002	build.ninja	1f1469895e8f5917
+3	78	7641699314744263	CMakeFiles/main.dir/main.c.obj	d0efa3be897b0d2e
+8	93	7641699314794116	CMakeFiles/main.dir/dynamic_list.c.obj	ba1355c019e9f10
+94	173	7641699315658619	C:/Users/Ali Abu-afash Nayef/Desktop/P1/bin/main.exe	a9a15dc9d94b8036

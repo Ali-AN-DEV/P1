@@ -23,14 +23,14 @@ GROUP: 1.2                                                        DATE: 13/03/20
 #endif
 
 // Función para mostrar la lista de consolas
-void printStatistics(tList *list) {
-    tPosL pos;
+void printStatistics(tList *l) {
+    tPosL p;
     int nintendoCount = 0, segaCount = 0;
     float nintendoSum = 0.0, segaSum = 0.0;
 
     // Imprimir cada consola en la lista
-    for (pos = first(*list); pos != LNULL; pos = next(pos, *list)) {
-        tItemL item = getItem(pos, *list);
+    for (p = first(*l); p != LNULL; p = next(p, *l)) {
+        tItemL item = getItem(p, *l);
         printf("Console %s seller %s brand %s price %.2f bids %d\n",
                item.consoleId, item.seller,
                (item.consoleBrand == nintendo) ? "nintendo" : "sega",
@@ -55,14 +55,14 @@ void printStatistics(tList *list) {
 }
 
 void processCommand(char *commandNumber, char command, char *param1, char *param2, char *param3, char *param4) {
-    static tList list;
+    static tList l;
     static int initialized = 0;
-    tPosL pos;
+    tPosL p;
     tItemL item;
 
     // Inicializar la lista si no se ha hecho aún
     if (!initialized) {
-        createEmptyList(&list);
+        createEmptyList(&l);
         initialized = 1;
     }
 
@@ -76,7 +76,7 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
                    commandNumber, param1, param2, param3, param4);
 
             // Comprobar si ya existe una consola con ese ID
-            if (findItem(param1, list) != LNULL) {
+            if (findItem(param1, l) != LNULL) {
                 printf("+ Error: New not possible\n");
                 break;
             }
@@ -89,7 +89,7 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
             item.bidCounter = 0;
 
             // Insertar en la lista
-            if (insertItem(item, LNULL, &list)) {
+            if (insertItem(item, LNULL, &l)) {
                 printf("* New: console %s seller %s brand %s price %.2f\n",
                        item.consoleId, item.seller,
                        (item.consoleBrand == nintendo) ? "nintendo" : "sega",
@@ -104,19 +104,19 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
             printf("%s D: console %s\n", commandNumber, param1);
 
             // Buscar la consola por su ID
-            pos = findItem(param1, list);
-            if (pos == LNULL) {
+            p = findItem(param1, l);
+            if (p == LNULL) {
                 printf("+ Error: Delete not possible\n");
             } else {
                 // Obtener los datos antes de eliminar
-                item = getItem(pos, list);
+                item = getItem(p, l);
                 printf("* Delete: console %s seller %s brand %s price %.2f bids %d\n",
                        item.consoleId, item.seller,
                        (item.consoleBrand == nintendo) ? "nintendo" : "sega",
                        item.consolePrice, item.bidCounter);
 
                 // Eliminar de la lista
-                deleteAtPosition(pos, &list);
+                deleteAtPosition(p, &l);
             }
             break;
 
@@ -126,14 +126,14 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
                    commandNumber, param1, param2, param3);
 
             // Buscar la consola por su ID
-            pos = findItem(param1, list);
-            if (pos == LNULL) {
+            p = findItem(param1, l);
+            if (p == LNULL) {
                 printf("+ Error: Bid not possible\n");
                 break;
             }
 
             // Obtener los datos de la consola
-            item = getItem(pos, list);
+            item = getItem(p, l);
 
             // Comprobar si el vendedor es el mismo que el pujador
             if (strcmp(item.seller, param2) == 0) {
@@ -151,7 +151,7 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
             // Actualizar el precio y el contador de pujas
             item.consolePrice = bidPrice;
             item.bidCounter++;
-            updateItem(item, pos, &list);
+            updateItem(item, p, &l);
 
             // Mostrar los datos actualizados
             printf("* Bid: console %s seller %s brand %s price %.2f bids %d\n",
@@ -164,10 +164,10 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
             // Comando STATS: mostrar estadísticas
             printf("%s S\n", commandNumber);
 
-            if (isEmptyList(list)) {
+            if (isEmptyList(l)) {
                 printf("+ Error: Stats not possible\n");
             } else {
-                printStatistics(&list);
+                printStatistics(&l);
             }
             break;
 
@@ -206,6 +206,7 @@ void readTasks(char *filename) {
 int main(int nargs, char **args) {
     char *file_name = "new.txt";
 
+    //Para gestionar el nombre del archivo
     if (nargs > 1) {
         file_name = args[1];
     } else {
@@ -214,7 +215,7 @@ int main(int nargs, char **args) {
         #endif
     }
 
-    readTasks(file_name);
+    readTasks(file_name); //Usamos la función anterior readTasks
 
     return 0;
 }
