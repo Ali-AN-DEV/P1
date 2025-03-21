@@ -12,16 +12,18 @@ GROUP: 1.2                                                        DATE: 20/02/20
 #include "static_list.h"
 #include "string.h"
 
+
 //Implementación de las operaciones
 
 /****
-*Objetivo:
-*Entradas:(identificador y breve descripción, una por línea).
-*Salidas:lo mismo que arriba
-*Precondiciones:
-*Poscondiciones:
+*Objetivo: Determinar si la lista esta vacía
+*Entradas:
+ -l: lista
+*Salidas:
+ -true si la lista está vacía, false en el caso contrario
+*Precondiciones: La lista debe estar inicializada
+*Poscondiciones: No modifica la lista
 ****/
-
 void createEmptyList(tList *l) {
    l -> lastPosition= LNULL; //se crea una lista vacía asignando su último elemento como lnull
 }
@@ -31,7 +33,9 @@ void createEmptyList(tList *l) {
 *Entradas:
  -l: lista
 *Salidas:
--true si la lista está vacía, false en el caso contrario
+ -true si la lista está vacía, false en el caso contrario
+*Precondiciones: La lista debe estar inicializada
+*Poscondiciones: No modifica la lista
 ****/
 bool isEmptyList(tList l) {
     return l.lastPosition == LNULL; //retorna TRUE si la lista está vacía.
@@ -42,9 +46,10 @@ bool isEmptyList(tList l) {
 *Entradas:
  -l: lista
 *Salidas:
--LNULL si la lista está vacía
--posición 0
-*Precondiciones: que la lista no esté vacía
+ -LNULL si la lista está vacía
+ -posición 0 si la lista no está vacía
+*Precondiciones: La lista debe estar inicializada
+*Poscondiciones: nada
 ****/
 tPosL first(tList l) {
     if (isEmptyList(l)) {
@@ -58,14 +63,25 @@ tPosL first(tList l) {
 *Entradas:
  -l: lista
 *Salidas:
--l.lastPosition
-*Precondiciones: que la lista no esté vacía
+ -l.lastPosition (LNULL si la lista está vacía)
+*Precondiciones: La lista debe estar inicializada
+*Poscondiciones: No modifica la lista
 ****/
 tPosL last(tList l) {
     return l.lastPosition; //recogemos la última posición
 }
 
-
+/****
+*Objetivo: Devolver la posición siguiente a una posición dada en la lista
+*Entradas:
+ -p: posición en la lista
+ -l: lista
+*Salidas:
+ -LNULL si p es la última posición
+ -Posición siguiente a p si no es la última
+*Precondiciones: La posición p debe ser válida en la lista
+*Poscondiciones: No modifica la lista
+****/
 tPosL next(tPosL p, tList l) {
  if(p ==  l.lastPosition) {
  return LNULL; //en el caso de que la posición indicada sea la última de la lista
@@ -74,7 +90,17 @@ tPosL next(tPosL p, tList l) {
  }
 }
 
-
+/****
+*Objetivo: Devolver la posición anterior a una posición dada en la lista
+*Entradas:
+ -p: posición en la lista
+ -l: lista
+*Salidas:
+ -LNULL si p es la primera posición (0)
+ -Posición anterior a p si no es la primera
+*Precondiciones: La posición p debe ser válida en la lista
+*Poscondiciones: No modifica la lista
+****/
 tPosL previous(tPosL p, tList l) {
    if(p == 0) {
    return LNULL; //en el caso de que se introudzca el primer elemento de la lista
@@ -83,7 +109,19 @@ tPosL previous(tPosL p, tList l) {
     }
 }
 
-
+/****
+*Objetivo: Insertar un elemento en una posición específica de la lista
+*Entradas:
+ -d: item a insertar
+ -p: posición donde insertar (LNULL para insertar al final)
+ -l: puntero a la lista
+*Salidas:
+ -true si se insertó correctamente
+ -false si la lista está llena
+*Precondiciones: La posición p debe ser válida en la lista o LNULL
+*Poscondiciones: Si hay espacio, la lista incluye el elemento en la posición indicada y la lastPosition aumenta en 1.
+                Si la lista está llena, se mantiene sin cambios.
+****/
 bool insertItem(tItemL d, tPosL p, tList *l) {
 
     if (l -> lastPosition == MAX - 1) {
@@ -105,7 +143,16 @@ bool insertItem(tItemL d, tPosL p, tList *l) {
     }
 }
 
-
+/****
+*Objetivo: Eliminar el elemento de una posición específica de la lista
+*Entradas:
+ -p: posición del elemento a eliminar
+ -l: puntero a la lista
+*Salidas: No hay valor de retorno
+*Precondiciones: La lista no está vacía y la posición p es válida
+*Poscondiciones: El elemento en la posición p es eliminado, los elementos posteriores se desplazan una posición
+               y lastPosition disminuye en 1
+****/
 void deleteAtPosition(tPosL p, tList *l) {
     //según la posición a eliminar, la detectamos y sustituimos su contenido por el de la posición siguiente,
     //haciendo esta acción sucesivamente hasta el final de la lista
@@ -115,17 +162,45 @@ void deleteAtPosition(tPosL p, tList *l) {
     l -> lastPosition--; //reducimos en uno el tamaño de la lista
 }
 
-
+/****
+*Objetivo: Obtener el elemento en una posición específica de la lista
+*Entradas:
+ -p: posición del elemento a obtener
+ -l: lista
+*Salidas:
+ -El elemento en la posición p
+*Precondiciones: La posición p debe ser válida en la lista
+*Poscondiciones: No modifica la lista
+****/
 tItemL getItem(tPosL p, tList l) {
    return l.data[p]; //según la posición indicada retorna el contenido de dicha posición en la lista
 }
 
-
+/****
+*Objetivo: Actualizar el elemento en una posición específica de la lista
+*Entradas:
+ -d: nuevo valor para el elemento
+ -p: posición del elemento a actualizar
+ -l: puntero a la lista
+*Salidas: No hay valor de retorno
+*Precondiciones: La posición p debe ser válida en la lista
+*Poscondiciones: El elemento en la posición p es actualizado con el valor d
+****/
 void updateItem(tItemL d, tPosL p, tList *l) {
     l ->data[p] = d; //cambia el contenido del elemento de la posición indicada a el indicado d
 }
 
-
+/****
+*Objetivo: Buscar un elemento en la lista por su identificador de consola
+*Entradas:
+ -consoleId: identificador de consola a buscar
+ -l: lista
+*Salidas:
+ -Posición del elemento si se encuentra
+ -LNULL si no se encuentra o la lista está vacía
+*Precondiciones: La lista debe estar inicializada
+*Poscondiciones: No modifica la lista
+****/
 tPosL findItem(tConsoleId consoleId, tList l) {
     if (isEmptyList(l))
         return LNULL; //si la lista es vacía no hay nada que retornar

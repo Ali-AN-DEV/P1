@@ -15,6 +15,7 @@ GROUP: 1.2                                                        DATE: 13/03/20
 
 #define MAX_BUFFER 255
 
+//Según se escoja la lista dinámica/estática
 #ifdef DYNAMIC_LIST
 #include "dynamic_list.h"
 #endif
@@ -22,7 +23,7 @@ GROUP: 1.2                                                        DATE: 13/03/20
 #include "static_list.h"
 #endif
 
-// Función para mostrar la lista de consolas
+// Hace lo que dice el nombre, de todas las consolas de la listas según el formato de los ejemplos de referencia
 void printStatistics(tList *l) {
     tPosL p;
     int nintendoCount = 0, segaCount = 0;
@@ -46,7 +47,7 @@ void printStatistics(tList *l) {
         }
     }
 
-    // Calcular y mostrar estadísticas por marca
+    // Calcular y mostrar estadísticas por marca [OJO, son exactos a la referencia]
     printf("\nBrand     Consoles    Price  Average\n");
     printf("Nintendo%10d%9.2f%9.2f\n", nintendoCount, nintendoSum,
            (nintendoCount > 0) ? nintendoSum / nintendoCount : 0.0);
@@ -54,6 +55,10 @@ void printStatistics(tList *l) {
            (segaCount > 0) ? segaSum / segaCount : 0.0);
 }
 
+/*
+ * Es la función principal que procesa los comandos leídos del archivo.
+ * Implementamos 4 operaciones: N (Nuevo), D (Eliminar), B (Bid), S (Estadísticas)
+ */
 void processCommand(char *commandNumber, char command, char *param1, char *param2, char *param3, char *param4) {
     static tList l;
     static int initialized = 0;
@@ -177,6 +182,7 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
     }
 }
 
+// Función para leer los comandos del archivo .txt correspondiente y los procesa
 void readTasks(char *filename) {
     FILE *f = NULL;
     char *commandNumber, *command, *param1, *param2, *param3, *param4;
@@ -203,6 +209,7 @@ void readTasks(char *filename) {
     }
 } 
 
+// según el .txt seleccionado en el config.cmake
 int main(int nargs, char **args) {
     char *file_name = "new.txt";
 
