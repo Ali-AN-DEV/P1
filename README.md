@@ -16,20 +16,23 @@ GROUP: 1.2                                                        DATE: 20/02/20
 ```
 ## Comandos para testear en la terminal 
 
-```
-chmod u+x script.sh
+```C
+chmod u+x script.sh 
 ./script.sh -p test
+./script.sh -v //Muestra las líneas en las que difiere con la salida de referencia
 ```
 
 • 1era Entrega aprobable: 
-``Static List result (checkpoint #1 - March 7th): OK``
+Tras ejecutar el script: ``./script.sh -p test`` debe ser:  
+``Tests global result (checkpoint #1 - April 4th): OK``
 
 
 • 2da Entrega aprobable:
-``Dynamic List result (checkpoint #2 - March 14th): OK``
+Tras ejecutar: ``./script.sh -p main`` para new.txt y bid.txt
+``Checkpoint #2 result (April 25th): OK``
 
 
-• 3era Entrega aprobable: ``Global result: OK`` + comprobar distintos documentos .txt
+• Entrega final aprobable: ``Main global result: OK`` para los 7 ficheros de entrada 
 
 ### Template para la documentación de funciones
 
